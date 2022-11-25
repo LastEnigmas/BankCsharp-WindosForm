@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BankCsharp.Helper.Generator;
+using BankCsharp.Helper.Security;
+using BankCsharp.models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +32,29 @@ namespace BankCsharp.Forms
 
         private void SigninBtn_Click(object sender, EventArgs e)
         {
+            UserViewModel userVm = new UserViewModel()
+            {
+                Username = FixText.FixTexts(UsernameInput.Text),
+                Password = PasswordHashC.EncodePasswordMd5(PasswordInput.Text),
+            };
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShoOrHide_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ShoOrHide.Checked)
+            {
+                PasswordInput.UseSystemPasswordChar = true;
+            }
+            else
+            {
+                PasswordInput.UseSystemPasswordChar = false;
+            }
         }
     }
 }

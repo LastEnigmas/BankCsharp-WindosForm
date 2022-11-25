@@ -35,6 +35,7 @@
             this.PasswordInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.ShoOrHide = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
@@ -99,6 +100,21 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Password";
             // 
+            // ShoOrHide
+            // 
+            this.ShoOrHide.AutoSize = true;
+            this.ShoOrHide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ShoOrHide.BackgroundImage")));
+            this.ShoOrHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ShoOrHide.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShoOrHide.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ShoOrHide.Location = new System.Drawing.Point(573, 142);
+            this.ShoOrHide.Name = "ShoOrHide";
+            this.ShoOrHide.Size = new System.Drawing.Size(68, 24);
+            this.ShoOrHide.TabIndex = 6;
+            this.ShoOrHide.Text = "Show";
+            this.ShoOrHide.UseVisualStyleBackColor = true;
+            this.ShoOrHide.CheckedChanged += new System.EventHandler(this.ShoOrHide_CheckedChanged);
+            // 
             // SignInFm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,6 +122,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ShoOrHide);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PasswordInput);
@@ -127,5 +144,6 @@
         private System.Windows.Forms.TextBox PasswordInput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox ShoOrHide;
     }
 }
