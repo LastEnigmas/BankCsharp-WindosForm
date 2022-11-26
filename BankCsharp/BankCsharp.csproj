@@ -61,6 +61,12 @@
     <Compile Include="Forms\SignInFm.Designer.cs">
       <DependentUpon>SignInFm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SignUpFm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SignUpFm.Designer.cs">
+      <DependentUpon>SignUpFm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\Generator\FixText.cs" />
     <Compile Include="Helper\Security\PasswordHashC.cs" />
     <Compile Include="models\User.cs" />
@@ -73,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SignInFm.resx">
       <DependentUpon>SignInFm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SignUpFm.resx">
+      <DependentUpon>SignUpFm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

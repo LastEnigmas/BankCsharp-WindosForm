@@ -30,7 +30,9 @@ namespace BankCsharp.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form1 form = new Form1();
+            this.Close();
+            form.Show();
         }
 
         private void SigninBtn_Click(object sender, EventArgs e)

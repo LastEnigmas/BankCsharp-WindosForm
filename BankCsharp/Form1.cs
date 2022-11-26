@@ -26,5 +26,17 @@ namespace BankCsharp
             this.Visible = false; 
             signInFm.Show();
         }
+
+        private void SignUpBtn_Click(object sender, EventArgs e)
+        {
+            SignUpFm signUp = new SignUpFm();
+            this.Hide();
+            signUp.Show();
+        }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -32,6 +32,7 @@
             this.Labal_Name = new System.Windows.Forms.Label();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.LoginBtn = new System.Windows.Forms.Button();
+            this.SignUpBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Labal_Name
@@ -58,6 +59,7 @@
             this.ExitBtn.TabIndex = 1;
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.UseVisualStyleBackColor = false;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // LoginBtn
             // 
@@ -71,12 +73,26 @@
             this.LoginBtn.UseVisualStyleBackColor = false;
             this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
+            // SignUpBtn
+            // 
+            this.SignUpBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.SignUpBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.SignUpBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignUpBtn.Location = new System.Drawing.Point(12, 397);
+            this.SignUpBtn.Name = "SignUpBtn";
+            this.SignUpBtn.Size = new System.Drawing.Size(81, 41);
+            this.SignUpBtn.TabIndex = 3;
+            this.SignUpBtn.Text = "SignUp";
+            this.SignUpBtn.UseVisualStyleBackColor = false;
+            this.SignUpBtn.Click += new System.EventHandler(this.SignUpBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SignUpBtn);
             this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.Labal_Name);
@@ -92,6 +108,7 @@
         private System.Windows.Forms.Label Labal_Name;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.Button LoginBtn;
+        private System.Windows.Forms.Button SignUpBtn;
     }
 }
 
