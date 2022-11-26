@@ -1,4 +1,5 @@
-﻿using BankCsharp.Helper.Generator;
+﻿using BankCsharp.Core.Servises;
+using BankCsharp.Helper.Generator;
 using BankCsharp.Helper.Security;
 using BankCsharp.models.ViewModels;
 using System;
@@ -15,9 +16,11 @@ namespace BankCsharp.Forms
 {
     public partial class SignInFm : Form
     {
-        public SignInFm()
+        private readonly UserService _userService;
+        public SignInFm(UserService userService)
         {
             InitializeComponent();
+            _userService = userService;
         }
 
         private void SetCancelButton(Button myCancelBtn)
@@ -37,7 +40,15 @@ namespace BankCsharp.Forms
                 Username = FixText.FixTexts(UsernameInput.Text),
                 Password = PasswordHashC.EncodePasswordMd5(PasswordInput.Text),
             };
-
+            bool result = _userService.Login(userVm);
+            if(result == true)
+            {
+                // Go to User pannel
+            }
+            else
+            {
+                // Go to error page and alert
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

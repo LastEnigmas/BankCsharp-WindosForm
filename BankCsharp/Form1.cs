@@ -1,4 +1,6 @@
-﻿using BankCsharp.Forms;
+﻿using BankCsharp.Core.Repository;
+using BankCsharp.Core.Servises;
+using BankCsharp.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +22,7 @@ namespace BankCsharp
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            SignInFm signInFm = new SignInFm();
+            SignInFm signInFm = new SignInFm(new UserRepository() );
             this.Visible = false; 
             signInFm.Show();
         }
