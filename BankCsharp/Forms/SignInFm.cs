@@ -1,4 +1,5 @@
-﻿using BankCsharp.Core.Servises;
+﻿using BankCsharp.Core.Repository;
+using BankCsharp.Core.Servises;
 using BankCsharp.Helper.Generator;
 using BankCsharp.Helper.Security;
 using BankCsharp.models.ViewModels;
@@ -45,7 +46,9 @@ namespace BankCsharp.Forms
             bool result = _userService.Login(userVm);
             if(result == true)
             {
-                // Go to User pannel
+                UserProfile userFm = new UserProfile( new UserProfileRepository() , userVm.Username);
+                this.Close();
+                userFm.Show();
             }
             else
             {
@@ -62,11 +65,11 @@ namespace BankCsharp.Forms
         {
             if (ShoOrHide.Checked)
             {
-                PasswordInput.UseSystemPasswordChar = true;
+                PasswordInput.UseSystemPasswordChar = false;
             }
             else
             {
-                PasswordInput.UseSystemPasswordChar = false;
+                PasswordInput.UseSystemPasswordChar = true ;
             }
         }
     }

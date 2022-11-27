@@ -19,11 +19,11 @@ namespace BankCsharp.Core.Repository
         {
             con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
             string query = "select * from MyUsers " +
-                $"where NationalCode = {nationalCode} ";
+                $"where NationalNumber = {nationalCode} ";
             SqlCommand cmd =new SqlCommand(query, con);
             con.Open();
             int result = cmd.ExecuteNonQuery();
-            if(result != 0)
+            if(result != -1)
             {
                 return true;
             }
@@ -36,28 +36,11 @@ namespace BankCsharp.Core.Repository
         {
             con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
             string query = "Select * from MyUsers " +
-                $" Username = {username} ";
+                $" where Username = '{username}' ";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int result = cmd.ExecuteNonQuery();
             if(result != -1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public bool Login(UserViewModel user)
-        {
-            con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
-            string myQuery = "Select * from MyUsers " + 
-                $" where Username = '{user.Username}' and Password = '{user.Password}' ";
-            SqlCommand cmd = new SqlCommand(myQuery, con);
-            con.Open();
-            int result = cmd.ExecuteNonQuery();
-            if (result != -1 )
             {
                 return true;
             }
@@ -78,7 +61,7 @@ namespace BankCsharp.Core.Repository
             };
             con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
             string myQuery = "insert into MyUsers " +
-                $" values({user.Username}, {user.Password} , {user.NationalCode} , {user.CardNumber} , {user.Money})";
+                $" values('{user.Password}', '{user.Username}' , {user.Money} , {user.CardNumber} , {user.NationalCode})";
             SqlCommand cmd = new SqlCommand(myQuery, con);
             con.Open();
             int result = cmd.ExecuteNonQuery();
@@ -90,6 +73,29 @@ namespace BankCsharp.Core.Repository
             {
                 return true;
             }
+        }
+        public bool Login(UserViewModel user)
+        {
+            con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
+            string myQuery = "Select * from MyUsers " + 
+                $" where Username = '{user.Username}' and Password = '{user.Password}' ";
+            SqlCommand cmd = new SqlCommand(myQuery, con);
+            con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                string username = (string)rdr["Username"];
+                if(username == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

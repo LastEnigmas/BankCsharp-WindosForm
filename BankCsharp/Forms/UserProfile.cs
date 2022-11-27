@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BankCsharp.Core.Servises;
+using BankCsharp.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,33 @@ namespace BankCsharp.Forms
 {
     public partial class UserProfile : Form
     {
-        public UserProfile()
+        private readonly IUserProfileService _userProfile;
+        private User user = new User();
+        public UserProfile( IUserProfileService userProfile , string username)
         {
+            _userProfile = userProfile;
+            FillUser(username);
             InitializeComponent();
+            User_Name_label.Text = user.Username ;
+        }
+
+        private void FillUser(string username)
+        {
+            user = _userProfile.FindUserByNationalCode(username);
+        }
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            string message = "Good Bye!";
+            MessageBox.Show(message);
+            var time = Task.Delay(1200);
+            time.Wait();
+            Application.Exit();
+        }
+        private void MainPageBtn_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            this.Close();
+            form1.Show();
         }
     }
 }

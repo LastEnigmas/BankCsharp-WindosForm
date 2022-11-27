@@ -36,11 +36,13 @@ namespace BankCsharp.Forms
         {
             if (ShoOrHide.Checked)
             {
-                PasswordInput.UseSystemPasswordChar = true;
+                PasswordInput.UseSystemPasswordChar = false;
+                RePasswordinput.UseSystemPasswordChar = false;
             }
             else
             {
-                PasswordInput.UseSystemPasswordChar = false;
+                PasswordInput.UseSystemPasswordChar = true ;
+                RePasswordinput.UseSystemPasswordChar = true;
             }
         }
 
