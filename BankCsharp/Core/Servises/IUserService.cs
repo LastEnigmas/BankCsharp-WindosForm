@@ -10,6 +10,8 @@ namespace BankCsharp.Core.Servises
     public interface IUserService
     {
         bool Login(UserViewModel user);
+        bool IsUsername(string username);
+        bool IsNationalCode(int nationalCode);
         bool SignUpUser(UserSignUpViewModel userSignUp);
     }
 }

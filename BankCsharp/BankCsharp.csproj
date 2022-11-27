@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Repository\UserRepository.cs" />
-    <Compile Include="Core\Servises\UserService.cs" />
+    <Compile Include="Core\Servises\IUserService.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +67,7 @@
     <Compile Include="Forms\SignUpFm.Designer.cs">
       <DependentUpon>SignUpFm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Generator\CreateCardNumber.cs" />
     <Compile Include="Helper\Generator\FixText.cs" />
     <Compile Include="Helper\Security\PasswordHashC.cs" />
     <Compile Include="models\User.cs" />
