@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace BankCsharp.Core.Servises
 {
-    public interface UserService
+    public interface IUserService
     {
         bool Login(UserViewModel user);
+        bool SignUpUser(UserSignUpViewModel userSignUp);
     }
 }

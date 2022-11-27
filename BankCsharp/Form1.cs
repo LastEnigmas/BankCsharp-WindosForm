@@ -29,7 +29,7 @@ namespace BankCsharp
 
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
-            SignUpFm signUp = new SignUpFm();
+            SignUpFm signUp = new SignUpFm(new UserRepository() );
             this.Hide();
             signUp.Show();
         }

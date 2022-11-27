@@ -16,8 +16,8 @@ namespace BankCsharp.Forms
 {
     public partial class SignInFm : Form
     {
-        private readonly UserService _userService;
-        public SignInFm(UserService userService)
+        private readonly IUserService _userService;
+        public SignInFm(IUserService userService)
         {
             InitializeComponent();
             _userService = userService;

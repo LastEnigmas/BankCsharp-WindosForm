@@ -70,6 +70,7 @@
     <Compile Include="Helper\Generator\FixText.cs" />
     <Compile Include="Helper\Security\PasswordHashC.cs" />
     <Compile Include="models\User.cs" />
+    <Compile Include="models\ViewModels\UserSignUpViewModel.cs" />
     <Compile Include="models\ViewModels\UserViewModel.cs" />
     <Compile Include="MyDb\MyDbContext.cs" />
     <Compile Include="Program.cs" />
