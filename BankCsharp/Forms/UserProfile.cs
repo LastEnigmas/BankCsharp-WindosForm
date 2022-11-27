@@ -42,5 +42,24 @@ namespace BankCsharp.Forms
             this.Close();
             form1.Show();
         }
+
+        private void CheckAccountBtn_Click(object sender, EventArgs e)
+        {
+            CheckAccountFm accountFm = new CheckAccountFm(user);
+            this.Close();
+            accountFm.Show();
+        }
+
+        private void AccountInfoBtn_Click(object sender, EventArgs e)
+        {
+            AccountInfoFm accountInfo = new AccountInfoFm(user);
+            accountInfo.Show();
+            this.Close();
+        }
+
+        private void SendMoneyBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
