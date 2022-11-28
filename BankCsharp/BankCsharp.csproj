@@ -75,6 +75,18 @@
     <Compile Include="Forms\CheckAccountFm.Designer.cs">
       <DependentUpon>CheckAccountFm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SendMoneyEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SendMoneyEnd.Designer.cs">
+      <DependentUpon>SendMoneyEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SendMoneyFm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SendMoneyFm.Designer.cs">
+      <DependentUpon>SendMoneyFm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SignInFm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +110,9 @@
     <Compile Include="Helper\Security\PasswordHashC.cs" />
     <Compile Include="models\User.cs" />
     <Compile Include="models\ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="models\ViewModels\SecendUserInfoViewModel.cs" />
+    <Compile Include="models\ViewModels\SendEndMoneyViewModel.cs" />
+    <Compile Include="models\ViewModels\SendMoneyViewModel.cs" />
     <Compile Include="models\ViewModels\UserSignUpViewModel.cs" />
     <Compile Include="models\ViewModels\UserViewModel.cs" />
     <Compile Include="MyDb\MyDbContext.cs" />
@@ -114,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CheckAccountFm.resx">
       <DependentUpon>CheckAccountFm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SendMoneyEnd.resx">
+      <DependentUpon>SendMoneyEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SendMoneyFm.resx">
+      <DependentUpon>SendMoneyFm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SignInFm.resx">
       <DependentUpon>SignInFm.cs</DependentUpon>
