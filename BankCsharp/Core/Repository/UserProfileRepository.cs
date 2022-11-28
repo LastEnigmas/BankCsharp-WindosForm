@@ -1,5 +1,6 @@
 ﻿using BankCsharp.Core.Servises;
 using BankCsharp.models;
+using BankCsharp.models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -16,6 +17,24 @@ namespace BankCsharp.Core.Repository
     {
         SqlConnection con = null;
 
+        public bool ChangePassword(ChangePasswordViewModel changePassword)
+        {
+            con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
+            string query = "update MyUsers " +
+                $" set Password = '{changePassword.NewPassword}' " +
+                $" where Username = '{changePassword.Username}' ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            int result = cmd.ExecuteNonQuery();
+            if(result != -1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public User FindUserByNationalCode(string username)
         {

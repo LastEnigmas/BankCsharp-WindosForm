@@ -38,5 +38,12 @@ namespace BankCsharp.Forms
             this.Close();
             profile.Show();
         }
+
+        private void changePasswordBtn_Click(object sender, EventArgs e)
+        {
+            ChangePasswordFm change = new ChangePasswordFm(user ,  new UserProfileRepository() );
+            this.Close();
+            change.Show();
+        }
     }
 }

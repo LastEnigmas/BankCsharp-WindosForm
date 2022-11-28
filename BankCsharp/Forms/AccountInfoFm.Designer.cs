@@ -37,6 +37,7 @@
             this.CardNumebrInput = new System.Windows.Forms.TextBox();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.MainPageBtn = new System.Windows.Forms.Button();
+            this.changePasswordBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -126,12 +127,26 @@
             this.MainPageBtn.UseVisualStyleBackColor = false;
             this.MainPageBtn.Click += new System.EventHandler(this.MainPageBtn_Click);
             // 
+            // changePasswordBtn
+            // 
+            this.changePasswordBtn.BackColor = System.Drawing.Color.YellowGreen;
+            this.changePasswordBtn.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changePasswordBtn.Location = new System.Drawing.Point(687, 393);
+            this.changePasswordBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.changePasswordBtn.Name = "changePasswordBtn";
+            this.changePasswordBtn.Size = new System.Drawing.Size(102, 46);
+            this.changePasswordBtn.TabIndex = 15;
+            this.changePasswordBtn.Text = "Change Password";
+            this.changePasswordBtn.UseVisualStyleBackColor = false;
+            this.changePasswordBtn.Click += new System.EventHandler(this.changePasswordBtn_Click);
+            // 
             // AccountInfoFm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.changePasswordBtn);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.MainPageBtn);
             this.Controls.Add(this.label3);
@@ -156,5 +171,6 @@
         private System.Windows.Forms.TextBox CardNumebrInput;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.Button MainPageBtn;
+        private System.Windows.Forms.Button changePasswordBtn;
     }
 }

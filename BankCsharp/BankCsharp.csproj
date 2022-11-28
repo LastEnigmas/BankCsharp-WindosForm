@@ -63,6 +63,12 @@
     <Compile Include="Forms\AccountInfoFm.Designer.cs">
       <DependentUpon>AccountInfoFm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ChangePasswordFm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangePasswordFm.Designer.cs">
+      <DependentUpon>ChangePasswordFm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CheckAccountFm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,7 @@
     <Compile Include="Helper\Generator\FixText.cs" />
     <Compile Include="Helper\Security\PasswordHashC.cs" />
     <Compile Include="models\User.cs" />
+    <Compile Include="models\ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="models\ViewModels\UserSignUpViewModel.cs" />
     <Compile Include="models\ViewModels\UserViewModel.cs" />
     <Compile Include="MyDb\MyDbContext.cs" />
@@ -101,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AccountInfoFm.resx">
       <DependentUpon>AccountInfoFm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangePasswordFm.resx">
+      <DependentUpon>ChangePasswordFm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CheckAccountFm.resx">
       <DependentUpon>CheckAccountFm.cs</DependentUpon>
