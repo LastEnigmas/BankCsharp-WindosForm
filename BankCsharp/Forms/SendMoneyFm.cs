@@ -58,6 +58,15 @@ namespace BankCsharp.Forms
                 SendMoneyFm moneyFm = new SendMoneyFm(this.user , new UserProfileRepository() );
                 this.Close();
                 moneyFm.Show();
+            }else if(SecendCardNumber.Text == user.CardNumber.ToString())
+            {
+                string message = "thst transfer is invalid";
+                MessageBox.Show(message);
+                var time = Task.Delay(1200);
+                time.Wait();
+                SendMoneyFm moneyFm = new SendMoneyFm(this.user, new UserProfileRepository());
+                this.Close();
+                moneyFm.Show();
             }
 
             try
@@ -73,7 +82,9 @@ namespace BankCsharp.Forms
                 string secendUsername = CheckNumberCard(cardNumber);
                 if(secendUsername != null)
                 {
-                    // next 
+                    SendMoneyEnd moneyEnd = new SendMoneyEnd( user, new UserProfileRepository(), sendMoney.CardNumber, Convert.ToDouble(Convert.ToString(sendMoney.Money)));
+                    this.Close();
+                    moneyEnd.Show();
                 }
                 else
                 {

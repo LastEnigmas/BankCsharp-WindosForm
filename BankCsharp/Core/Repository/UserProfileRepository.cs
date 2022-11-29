@@ -35,56 +35,6 @@ namespace BankCsharp.Core.Repository
                 return false;
             }
         }
-        public bool CheckMoney(SendEndMoneyViewModel sendEnd)
-        {
-            con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
-            string query = "select * from MyUsers " +
-                $" where Username = '{sendEnd.UserFirstUsername}'";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            SqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                double currentMoney = (double)(rdr["Money"]);
-                if(currentMoney - sendEnd.Money > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return false;
-        }
-        public bool DoSendMoney(SendEndMoneyViewModel sendEnd)
-        {
-            con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
-            bool result;
-            result = CheckMoney(sendEnd);
-            if(result == false)
-            {
-                return false;
-            }
-
-            User user = new User();
-            user = GetUserByUsername(user.Username);
-            user.Money = (SqlMoney)(Convert.ToDouble(user.Money) - sendEnd.Money);
-
-            result = Update(user);
-            if(result == false)
-            {
-                return false;
-            }
-
-            result =  SecenUserMoneyTask(sendEnd.UserSecendUsername , sendEnd.Money);
-            if( result == false)
-            {
-                return false;
-            }
-
-            return true;
-        }
         public User FindUserByCardNumber(string username)
         {
             con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
@@ -151,7 +101,7 @@ namespace BankCsharp.Core.Repository
                 User user = new User()
                 {
                     Username = (string)(rdr["Username"]),
-                    Money = (SqlMoney)(double)(rdr["Money"]),
+                    Money = (SqlMoney)Convert.ToDouble(Convert.ToString(rdr["Money"])),
                 };
 
                 return user;
@@ -203,13 +153,66 @@ namespace BankCsharp.Core.Repository
         }
 
 
+        #region Money_Task
+        public bool CheckMoney(SendEndMoneyViewModel sendEnd)
+        {
+            con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
+            string query = "select * from MyUsers " +
+                $" where Username = '{sendEnd.UserFirstUsername}'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                double currentMoney = Convert.ToDouble(Convert.ToString((rdr["Money"]))) ;
+                if(currentMoney - sendEnd.Money > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+        public bool DoSendMoney(SendEndMoneyViewModel sendEnd)
+        {
+            bool result;
+            result = CheckMoney(sendEnd);
+            if(result == false)
+            {
+                return false;
+            }
+
+            User user = new User();
+            user = GetUserByUsername(sendEnd.UserFirstUsername);
+            user.Money = (SqlMoney)(Convert.ToDouble(Convert.ToString(user.Money)) - sendEnd.Money);
+
+            result = Update(user);
+            if(result == false)
+            {
+                return false;
+            }
+
+            result =  SecenUserMoneyTask(sendEnd.UserSecendUsername , sendEnd.Money);
+            if( result == false)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
+
         #region SecendUser_Money
         public bool SecenUserMoneyTask(string username , double money)
         {
             User user = new User();
             user = FindUserByNationalCode(username);
 
-            user.Money = (SqlMoney)((Convert.ToDouble(user.Money)) - money);
+            user.Money = (SqlMoney)((Convert.ToDouble(Convert.ToString(user.Money))) +  money);
             Update(user);
             return true;
         }
@@ -217,14 +220,14 @@ namespace BankCsharp.Core.Repository
         {
             con = new SqlConnection("Server=.; database=MyBank_WindowsForm; Trusted_Connection=True; ");
             string query = "select * from MyUsers " +
-                $" where  NumberCard = {cardnumber}";
+                $" where  CardNumber = {cardnumber}";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 SecendUserInfoViewModel secendUserInfo = new SecendUserInfoViewModel();
-                secendUserInfo.CardNumber = (int)dr["NumberCard"];
+                secendUserInfo.CardNumber = (int)dr["CardNumber"];
                 secendUserInfo.Username = (string)dr["Username"];
 
                 return secendUserInfo;

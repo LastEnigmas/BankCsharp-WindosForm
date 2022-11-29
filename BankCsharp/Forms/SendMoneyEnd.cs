@@ -31,6 +31,7 @@ namespace BankCsharp.Forms
             MONEY = money; 
         }
 
+
         private void FillDataForm(SecendUserInfoViewModel secendUser , double money )
         {
             SecendCardNumber.Text = secendUser.CardNumber.ToString();
@@ -57,7 +58,27 @@ namespace BankCsharp.Forms
                 Money = MONEY,
             };
 
-
+            bool result = _userProfile.DoSendMoney(sendEnd);
+            if (result)
+            {
+                string message = $"Your Transfer is done. dear {sendEnd.UserFirstUsername}";
+                MessageBox.Show(message);
+                var time = Task.Delay(1200);
+                time.Wait();
+                UserProfile profile = new UserProfile( new UserProfileRepository() , this.user.Username );
+                this.Close();
+                profile.Show();
+            }
+            else
+            {
+                string message = "Somthings Wrong.";
+                MessageBox.Show(message);
+                var time = Task.Delay(1200);
+                time.Wait();
+                UserProfile profile = new UserProfile(new UserProfileRepository(), this.user.Username);
+                this.Close();
+                profile.Show();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BankCsharp.Core.Servises;
+﻿using BankCsharp.Core.Repository;
+using BankCsharp.Core.Servises;
 using BankCsharp.models;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,9 @@ namespace BankCsharp.Forms
 
         private void SendMoneyBtn_Click(object sender, EventArgs e)
         {
-
+            SendMoneyFm send = new SendMoneyFm(user, new UserProfileRepository());
+            this.Close();
+            send.Show();
         }
     }
 }
